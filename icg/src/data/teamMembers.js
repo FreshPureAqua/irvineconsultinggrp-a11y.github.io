@@ -13,7 +13,7 @@ export const teamMembers = [
     categories: ["executives", "projectManagers"],
     committees: [],
     headshotSrc: "/headshots/Khang.png",
-    hoverSrc: "/khang_silly.png",
+    hoverSrc: "/khang-silly.png",
     linkedinUrl: "https://www.linkedin.com/in/khangtoannguyen/",
   },
   {
@@ -23,7 +23,7 @@ export const teamMembers = [
     categories: ["executives", "projectManagers"],
     committees: [],
     headshotSrc: "/headshots/Mohan.png",
-    hoverSrc: "/mohan_silly.jpg",
+    hoverSrc: "/mohan-silly.jpg",
     linkedinUrl: "https://www.linkedin.com/in/mohan-krishnan1/",
   },
   {
@@ -43,7 +43,7 @@ export const teamMembers = [
     categories: ["executives", "projectManagers"],
     committees: [],
     headshotSrc: "/headshots/Kim.png",
-    hoverSrc: "/kimmy_silly.jpg",
+    hoverSrc: "/kimmy-silly.jpg",
     linkedinUrl: "https://www.linkedin.com/in/kimvuong-vntk/",
   },
 
@@ -65,7 +65,7 @@ export const teamMembers = [
     categories: ["directors", "projectManagers"],
     committees: ["Marketing"],
     headshotSrc: "/headshots/Brian.png",
-    hoverSrc: "/brian_silly.jpg",
+    hoverSrc: "/brian-silly.jpg",
     linkedinUrl: "https://www.linkedin.com/in/brianhanlee/",
   },
   {
@@ -118,7 +118,7 @@ export const teamMembers = [
     categories: ["associates"],
     committees: ["Marketing", "Socials"],
     headshotSrc: "/headshots/Andrew.png",
-    hoverSrc: "/andrew_silly.jpeg",
+    hoverSrc: "/andrew-silly.jpeg",
     linkedinUrl: "https://www.linkedin.com/in/andrew-wagner-31370329b/",
   },
   {

@@ -1,63 +1,52 @@
-import { Mail, Instagram, Linkedin } from "lucide-react"
+import { Mail, Instagram, Linkedin } from "lucide-react";
 
 function Footer() {
   return (
-    <footer className="bg-[#061e2a] border-t text-white p-4">
-      <div className="container ml-auto max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between">
-        {/* Left Section */}
-        <div className="flex flex-col md:flex-row items-center justify-center mb-4 md:mb-0 -ml-10">
+    <footer className="bg-icgblue text-white py-10 px-6">
+      <div className="container mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
+        {/* Left */}
+        <div className="flex items-center gap-5">
+          <img
+            src="/icg-logo-white.png"
+            alt="ICG Logo"
+            className="w-16 h-16"
+          />
           <div>
-            <img
-              src="/ICG 4x4 Transparent White.png"
-              alt="ICG Logo"
-              className="w-24 h-24 md:w-32 md:h-32 mr-0 md:mr-10 mb-2 md:mb-0"
-            />
-          </div>
-          <div className="text-center md:text-left">
-            <div className="border-b border-white pb-2">
-              <h1 className="text-xl md:text-3xl font-bold">
-                Irvine Consulting Group
-              </h1>
-              <h2 className="text-lg md:text-xl">
-                Where Talent Meets Opportunity
-              </h2>
-            </div>
-            <p className="mt-2">© 2025 ICG</p>
+            <h3 className="text-xl font-bold">Irvine Consulting Group</h3>
+            <p className="text-lg text-white/90 border-b border-white/40 pb-1 mt-0.5">
+              Where Talent Meets Opportunity
+            </p>
+            <p className="text-xs text-white/40 mt-2">&copy; 2026 ICG</p>
           </div>
         </div>
-        {/* Right Section */}
-        <div className="flex flex-col items-center justify-center -mr-6">
-          <h1 className="text-xl md:text-2xl font-bold py-2">Contact Us</h1>
-          <div className="flex items-center justify-center gap-4">
-            <a
-              href="mailto:irvineconsulting.grp@gmail.com"
-              aria-label="Email us"
-            >
-              <div className="w-10 h-10 md:w-12 md:h-12 rounded-full border-2 border-white flex items-center justify-center hover:bg-white hover:text-gray-900 transition-colors">
-                <Mail className="w-6 h-6 md:w-8 md:h-8" />
-              </div>
-            </a>
-            <a
-              href="https://www.instagram.com/icg.uci/"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Follow us on Instagram"
-            >
-              <div className="w-10 h-10 md:w-12 md:h-12 rounded-full border-2 border-white flex items-center justify-center hover:bg-white hover:text-gray-900 transition-colors">
-                <Instagram className="w-6 h-6 md:w-8 md:h-8" />
-              </div>
-            </a>
-            <a
-              href="https://www.linkedin.com/company/irvineconsultinggroup/about/"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Connect with us on LinkedIn"
-            >
-              <div className="w-10 h-10 md:w-12 md:h-12 rounded-full border-2 border-white flex items-center justify-center hover:bg-white hover:text-gray-900 transition-colors">
-                <Linkedin className="w-6 h-6 md:w-8 md:h-8" />
-              </div>
-            </a>
-          </div>
+
+        {/* Right */}
+        <div className="flex items-center gap-5">
+          <a
+            href="https://www.instagram.com/icg.uci/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Instagram"
+            className="text-white/60 hover:text-white transition-colors"
+          >
+            <Instagram className="w-6 h-6" />
+          </a>
+          <a
+            href="https://www.linkedin.com/company/irvineconsultinggroup/about/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="LinkedIn"
+            className="text-white/60 hover:text-white transition-colors"
+          >
+            <Linkedin className="w-6 h-6" />
+          </a>
+          <a
+            href="mailto:irvineconsulting.grp@gmail.com"
+            aria-label="Email"
+            className="text-white/60 hover:text-white transition-colors"
+          >
+            <Mail className="w-6 h-6" />
+          </a>
         </div>
       </div>
     </footer>

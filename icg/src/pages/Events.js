@@ -27,7 +27,7 @@ const upcomingEvents = [
       description:" Join us for a panel discussion with industry professionals and learn how to break into the consulting industry.",
       date: "May 15, 2025 • 6:00 PM",
       location: "Antrepreneur Center",
-      image: "/ws_2_website.png",
+      image: "/workshop-2.png",
       formUrl: "https://docs.google.com/forms/d/e/1FAIpQLSe-zI6VLwxLySvm5SR7PjJru5Vy-kdIvyASxJjE3WcEga608w/viewform?embedded=true",
     },
     {
@@ -36,7 +36,7 @@ const upcomingEvents = [
       description: "Learn about what it is like to work at top consulting firms and how to prepare for the recruitment process.",
       date: "May 22, 2025 • 6:00 PM",
       location: "Antrepreneur Center",
-      image: "/ws3_website.png",
+      image: "/workshop-3.png",
       formUrl: "https://docs.google.com/forms/d/e/1FAIpQLSfgfm3tp5zXqEcyVl0E02wbs80cbMLzoH3jLI4RXafw6U8fbg/viewform?embedded=true",
 
     }

@@ -103,7 +103,7 @@ export default function Contact() {
         <div
           className="absolute inset-0 bg-cover bg-center opacity-30"
           style={{
-            backgroundImage: "url('/icg_work_with_us.webp')",
+            backgroundImage: "url('/icg-work-with-us.webp')",
             backgroundPosition: "center",
             backgroundSize: "cover",
           }}
@@ -175,15 +175,16 @@ export default function Contact() {
           <div className="logo-carousel">
             <div className="logo-carousel-track flex items-center">
               {/* Your Logos */}
-              <img src="/clientlogo/7 Leaves logo.avif" alt="7 Leaves" className="h-10 md:h-16 mx-4 md:mx-8 shrink-0" />
-              <img src="/clientlogo/ABD logo.png" alt="ABD" className="h-10 md:h-16 mx-4 md:mx-8 shrink-0" />
-              <img src="/clientlogo/adgreetz logo.png" alt="AdGreetz" className="h-10 md:h-16 mx-4 md:mx-8 shrink-0" />
-              <img src="/clientlogo/Aura logo.jpg" alt="Aura" className="h-10 md:h-16 mx-4 md:mx-8 shrink-0" />
-              <img src="/clientlogo/BeReal-Logo-Black.png" alt="BeReal" className="h-10 md:h-16 mx-4 md:mx-8 shrink-0" />
-              <img src="/clientlogo/knowt logoo.png" alt="Knowt" className="h-10 md:h-16 mx-4 md:mx-8 shrink-0" />
-              <img src="/clientlogo/Kura sushi logo.png" alt="Kura Sushi" className="h-10 md:h-16 mx-4 md:mx-8 shrink-0" />
-              <img src="/clientlogo/TC logo.png" alt="ToughCutie" className="h-10 md:h-16 mx-4 md:mx-8 shrink-0" />
-              <img src="/clientlogo/datedrop.jpg" alt="Date Drop" className="h-10 md:h-16 mx-4 md:mx-8 shrink-0" />
+              <img src="/clientlogo/bereal.png" alt="BeReal" className="h-10 md:h-16 mx-4 md:mx-8 shrink-0" />
+              <img src="/clientlogo/sandisk.png" alt="SanDisk" className="h-10 md:h-16 mx-4 md:mx-8 shrink-0" />
+              <img src="/clientlogo/abd.png" alt="ABD" className="h-10 md:h-16 mx-4 md:mx-8 shrink-0" />
+              <img src="/clientlogo/aura.png" alt="Aura" className="h-10 md:h-16 mx-4 md:mx-8 shrink-0" />
+              <img src="/clientlogo/adgreetz.png" alt="AdGreetz" className="h-10 md:h-16 mx-4 md:mx-8 shrink-0" />
+              <img src="/clientlogo/kura-sushi.png" alt="Kura Sushi" className="h-10 md:h-16 mx-4 md:mx-8 shrink-0" />
+              <img src="/clientlogo/knowt.png" alt="Knowt" className="h-10 md:h-16 mx-4 md:mx-8 shrink-0" />
+              <img src="/clientlogo/toughcutie.png" alt="ToughCutie" className="h-10 md:h-16 mx-4 md:mx-8 shrink-0" />
+              <img src="/clientlogo/datedrop.png" alt="DateDrop" className="h-10 md:h-16 mx-4 md:mx-8 shrink-0" />
+              <img src="/clientlogo/7leaves.png" alt="7 Leaves" className="h-10 md:h-16 mx-4 md:mx-8 shrink-0" />
             </div>
           </div>
         </div>
@@ -194,7 +195,7 @@ export default function Contact() {
         <div
           className="absolute inset-0 bg-cover bg-center opacity-30"
           style={{
-            backgroundImage: "url('/icg_test_img.jpg')",
+            backgroundImage: "url('/icg-test.jpg')",
             backgroundPosition: "bottom",
           }}
         />

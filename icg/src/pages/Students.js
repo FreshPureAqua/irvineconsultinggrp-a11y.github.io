@@ -2,7 +2,7 @@ import React from 'react';
 import ApplicationTimeline from '../components/ApplicationTimeline';
 import DevelopmentCarousel from "../components/DevelopmentCarousel";
 import FAQItem from '../components/FaqItem';
-import { motion } from 'framer-motion';
+
 
 function Students() {
   const SOCIAL = {
@@ -105,7 +105,7 @@ function Students() {
       {/* Hero Section */}
       <div
         className="min-h-screen relative bg-cover bg-center flex items-center"
-        style={{ backgroundImage: `url("/icg_join_us_2.jpeg")` }}
+        style={{ backgroundImage: `url("/icg-join-us.jpeg")` }}
       >
         <div className="absolute inset-0 bg-[#061c2a] bg-opacity-80"></div>
         <div className="relative z-10 container mx-auto px-6 py-20 flex flex-col items-center justify-center text-center">
@@ -146,7 +146,7 @@ function Students() {
       {/* Testimonials Section */}
       <div
         className="py-16 relative bg-cover bg-center"
-        style={{ backgroundImage: 'url("/Merage Undergraduate Student Association Cover.jpeg")' }}
+        style={{ backgroundImage: 'url("/merage-cover.jpeg")' }}
       >
         <div className="absolute inset-0 bg-white bg-opacity-90"></div>
         <div className="relative container mx-auto px-6">

@@ -101,134 +101,139 @@ function Students() {
         </div>
       </div>
 
-      {/* ===== YOUR ICG EXPERIENCE ===== */}
-      <div className="bg-white pt-24 pb-10 px-6">
-        <div className="container mx-auto">
-          <motion.h2
-            className="text-5xl md:text-7xl font-extrabold text-icgblue mb-4 font-marcellus text-center"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={fadeUp}
-          >
-            Your ICG Experience
-          </motion.h2>
-        </div>
-        <div className="text-icgblue">
-          <DevelopmentCarousel />
-        </div>
-      </div>
+      {/* ===== FLOATING CONTENT PANEL ===== */}
+      <div className="relative z-10 -mt-10 md:-mt-16 bg-white rounded-t-[28px] md:rounded-t-[40px] px-4 md:px-8 pt-8 md:pt-12 pb-16">
 
-      {/* ===== TESTIMONIALS ===== */}
-      <div className="bg-white pt-8 pb-24 px-6">
-        <div className="container mx-auto max-w-5xl">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {testimonials.map((t, i) => (
-              <motion.div
-                key={i}
-                className="bg-white border border-gray-200 rounded-2xl p-8 md:p-10 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                custom={i}
-                variants={fadeUp}
-              >
-                <div className="text-7xl md:text-8xl font-extrabold text-icgblue font-serif leading-none -mb-4 select-none">
-                  &ldquo;
-                </div>
-                <p className="text-gray-700 text-sm md:text-base leading-relaxed mb-8">
-                  {t.quote}
-                </p>
-                <div className="flex items-center gap-4">
-                  <img
-                    src={t.image}
-                    alt={t.name}
-                    className="w-12 h-12 rounded-full object-cover"
-                  />
-                  <div>
-                    <p className="font-bold text-icgblue">{t.name}</p>
-                    <p className="text-sm text-gray-500">{t.role}</p>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
+        {/* ===== YOUR ICG EXPERIENCE ===== */}
+        <div className="pt-16 pb-10 px-2 md:px-6">
+          <div className="container mx-auto">
+            <motion.h2
+              className="text-5xl md:text-7xl font-extrabold text-icgblue mb-4 font-marcellus text-center"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={fadeUp}
+            >
+              Your ICG Experience
+            </motion.h2>
+          </div>
+          <div className="text-icgblue">
+            <DevelopmentCarousel />
           </div>
         </div>
-      </div>
 
-      {/* ===== RECRUITMENT TIMELINE ===== */}
-      <div className="bg-white py-24 px-6">
-        <div className="container mx-auto max-w-3xl">
-          <motion.h2
-            className="text-5xl md:text-7xl font-extrabold text-icgblue mb-40 font-marcellus text-center"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={fadeUp}
-          >
-            Recruitment Timeline
-          </motion.h2>
-
-          <div className="relative ml-3 md:ml-5">
-            {timelineData.map((item, i) => (
-              <div key={i} className="relative flex items-stretch">
-                {/* Left column: dot + connector line */}
-                <div className="flex flex-col items-center shrink-0 w-6">
-                  <div className={`w-px flex-1 ${i === 0 ? 'bg-transparent' : 'bg-gray-300'}`} />
-                  <motion.div
-                    className="w-3 h-3 rounded-full bg-icgblue shrink-0"
-                    initial={{ scale: 0 }}
-                    whileInView={{ scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.4, delay: i * 0.15, type: 'spring', stiffness: 300 }}
-                  />
-                  <motion.div
-                    className={`w-px flex-1 origin-top ${i === timelineData.length - 1 ? 'bg-transparent' : 'bg-gray-300'}`}
-                    initial={{ scaleY: 0 }}
-                    whileInView={{ scaleY: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: i * 0.15 + 0.2 }}
-                  />
-                </div>
-
-                {/* Card */}
+        {/* ===== TESTIMONIALS ===== */}
+        <div className="pt-8 pb-24 px-2 md:px-6">
+          <div className="container mx-auto max-w-5xl">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {testimonials.map((t, i) => (
                 <motion.div
-                  className="flex-1 ml-6 md:ml-10 mb-8"
-                  initial={{ opacity: 0, x: 40 }}
-                  whileInView={{ opacity: 1, x: 0 }}
+                  key={i}
+                  className="bg-white border border-gray-200 rounded-2xl p-8 md:p-10 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
+                  initial="hidden"
+                  whileInView="visible"
                   viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: i * 0.15 }}
+                  custom={i}
+                  variants={fadeUp}
                 >
-                  <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
-                    <div className="flex items-start justify-between gap-4 mb-2">
-                      <div>
-                        <h3 className="text-lg md:text-xl font-bold text-icgblue">
-                          {item.heading}
-                        </h3>
-                        <p className="text-sm font-medium text-[#005d97] italic">
-                          {item.date}
-                        </p>
-                      </div>
-                      {item.button && (
-                        <a
-                          href={item.button.href}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="shrink-0 bg-icgblue text-white text-sm font-bold px-5 py-2 rounded-md hover:bg-icgblue/90 hover:scale-105 transition-all duration-200"
-                        >
-                          {item.button.label}
-                        </a>
-                      )}
+                  <div className="text-7xl md:text-8xl font-extrabold text-icgblue font-serif leading-none -mb-4 select-none">
+                    &ldquo;
+                  </div>
+                  <p className="text-gray-700 text-sm md:text-base leading-relaxed mb-8">
+                    {t.quote}
+                  </p>
+                  <div className="flex items-center gap-4">
+                    <img
+                      src={t.image}
+                      alt={t.name}
+                      className="w-12 h-12 rounded-full object-cover"
+                    />
+                    <div>
+                      <p className="font-bold text-icgblue">{t.name}</p>
+                      <p className="text-sm text-gray-500">{t.role}</p>
                     </div>
-                    <p className="text-gray-600 text-sm md:text-base leading-relaxed mt-2">
-                      {item.content}
-                    </p>
                   </div>
                 </motion.div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
+
+        {/* ===== RECRUITMENT TIMELINE ===== */}
+        <div className="py-24 px-2 md:px-6">
+          <div className="container mx-auto max-w-3xl">
+            <motion.h2
+              className="text-5xl md:text-7xl font-extrabold text-icgblue mb-40 font-marcellus text-center"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={fadeUp}
+            >
+              Recruitment Timeline
+            </motion.h2>
+
+            <div className="relative ml-3 md:ml-5">
+              {timelineData.map((item, i) => (
+                <div key={i} className="relative flex items-stretch">
+                  {/* Left column: dot + connector line */}
+                  <div className="flex flex-col items-center shrink-0 w-6">
+                    <div className={`w-px flex-1 ${i === 0 ? 'bg-transparent' : 'bg-gray-300'}`} />
+                    <motion.div
+                      className="w-3 h-3 rounded-full bg-icgblue shrink-0"
+                      initial={{ scale: 0 }}
+                      whileInView={{ scale: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.4, delay: i * 0.15, type: 'spring', stiffness: 300 }}
+                    />
+                    <motion.div
+                      className={`w-px flex-1 origin-top ${i === timelineData.length - 1 ? 'bg-transparent' : 'bg-gray-300'}`}
+                      initial={{ scaleY: 0 }}
+                      whileInView={{ scaleY: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.5, delay: i * 0.15 + 0.2 }}
+                    />
+                  </div>
+
+                  {/* Card */}
+                  <motion.div
+                    className="flex-1 ml-6 md:ml-10 mb-8"
+                    initial={{ opacity: 0, x: 40 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: i * 0.15 }}
+                  >
+                    <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+                      <div className="flex items-start justify-between gap-4 mb-2">
+                        <div>
+                          <h3 className="text-lg md:text-xl font-bold text-icgblue">
+                            {item.heading}
+                          </h3>
+                          <p className="text-sm font-medium text-[#005d97] italic">
+                            {item.date}
+                          </p>
+                        </div>
+                        {item.button && (
+                          <a
+                            href={item.button.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="shrink-0 bg-icgblue text-white text-sm font-bold px-5 py-2 rounded-md hover:bg-icgblue/90 hover:scale-105 transition-all duration-200"
+                          >
+                            {item.button.label}
+                          </a>
+                        )}
+                      </div>
+                      <p className="text-gray-600 text-sm md:text-base leading-relaxed mt-2">
+                        {item.content}
+                      </p>
+                    </div>
+                  </motion.div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   );

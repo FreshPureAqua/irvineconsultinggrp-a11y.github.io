@@ -12,6 +12,7 @@ module.exports = {
       },
       colors: {
         icgblue: '#061e2a',
+        skyblue: '#bde0fe',
       },
     },
   },

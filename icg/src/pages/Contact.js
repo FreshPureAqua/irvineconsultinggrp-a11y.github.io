@@ -214,17 +214,17 @@ function ClientCarouselCard({
 
         {/* Back — company + project copy */}
         <div
-          className="absolute inset-0 rounded-2xl border border-gray-200 bg-white p-5 py-4 md:p-6 md:py-5 shadow-md flex flex-col justify-center overflow-y-auto"
+          className="absolute inset-0 rounded-2xl border border-gray-200 bg-white p-5 py-4 md:p-6 md:py-5 shadow-md flex flex-col items-center justify-center text-center overflow-y-auto"
           style={{
             backfaceVisibility: "hidden",
             WebkitBackfaceVisibility: "hidden",
             transform: "rotateY(180deg)",
           }}
         >
-          <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-4">
+          <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-4 w-full">
             {client.alt}
           </h3>
-          <p className="text-sm md:text-base text-gray-600 leading-relaxed">
+          <p className="text-sm md:text-base text-gray-600 leading-relaxed w-full max-w-sm">
             {client.projectDescription}
           </p>
         </div>
@@ -316,7 +316,7 @@ export default function Contact() {
             Trusted by Fortune 500 companies
           </h1>
           <h1
-            className="text-4xl sm:text-5xl md:text-7xl font-extrabold leading-[0.85] tracking-tighter italic bg-clip-text text-transparent mt-0"
+            className="text-4xl sm:text-5xl md:text-7xl font-extrabold leading-[0.85] tracking-tighter bg-clip-text text-transparent mt-0"
             style={{
               backgroundImage:
                 "linear-gradient(to right, #a8d8ff, #ffffff, #a8d8ff)",

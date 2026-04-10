@@ -6,8 +6,9 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['"Helvetica Neue"', 'Helvetica', 'Arial', 'sans-serif'],
-        serif: ['"Times New Roman"', 'serif'],
+        sans: ['Aileron', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        serif: ['Aileron', 'ui-serif', 'Georgia', 'serif'],
+        mono: ['Aileron', 'ui-monospace', 'monospace'],
       },
       colors: {
         icgblue: '#061e2a',

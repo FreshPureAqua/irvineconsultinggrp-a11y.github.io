@@ -20,33 +20,36 @@ function Footer() {
           </div>
         </div>
 
-        {/* Right */}
-        <div className="flex items-center gap-5">
-          <a
-            href="https://www.instagram.com/icg.uci/"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Instagram"
-            className="text-white/60 hover:text-white transition-colors"
-          >
-            <Instagram className="w-6 h-6" />
-          </a>
-          <a
-            href="https://www.linkedin.com/company/irvineconsultinggroup/about/"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="LinkedIn"
-            className="text-white/60 hover:text-white transition-colors"
-          >
-            <Linkedin className="w-6 h-6" />
-          </a>
-          <a
-            href="mailto:irvineconsulting.grp@gmail.com"
-            aria-label="Email"
-            className="text-white/60 hover:text-white transition-colors"
-          >
-            <Mail className="w-6 h-6" />
-          </a>
+        {/* Right — Contact Us + icons (matches site banner) */}
+        <div className="flex flex-col items-center md:items-end gap-4">
+          <h3 className="text-xl font-bold text-white">Contact Us</h3>
+          <div className="flex items-center gap-5">
+            <a
+              href="mailto:irvineconsulting.grp@gmail.com"
+              aria-label="Email"
+              className="rounded-full border border-white/50 p-2 text-white/90 hover:bg-white/10 hover:text-white transition-colors"
+            >
+              <Mail className="w-6 h-6" />
+            </a>
+            <a
+              href="https://www.instagram.com/icg.uci/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram"
+              className="rounded-full border border-white/50 p-2 text-white/90 hover:bg-white/10 hover:text-white transition-colors"
+            >
+              <Instagram className="w-6 h-6" />
+            </a>
+            <a
+              href="https://www.linkedin.com/company/irvineconsultinggroup/about/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn"
+              className="rounded-full border border-white/50 p-2 text-white/90 hover:bg-white/10 hover:text-white transition-colors"
+            >
+              <Linkedin className="w-6 h-6" />
+            </a>
+          </div>
         </div>
       </div>
     </footer>

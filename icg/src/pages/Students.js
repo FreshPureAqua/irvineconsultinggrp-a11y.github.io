@@ -74,16 +74,24 @@ function Students() {
       >
         <div className="absolute inset-0 bg-icgblue/70" />
         <div className="relative z-10 text-center px-6">
-          <motion.h1
-            className="text-4xl sm:text-6xl md:text-8xl text-white font-extrabold leading-tight tracking-tight"
+          <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <span className="italic">Join UCI's</span>
-            <br />
-            <span className="italic">Premier Strategy Consulting Org</span>
-          </motion.h1>
+            <h1 className="text-4xl sm:text-5xl md:text-7xl text-white font-extrabold leading-[0.85] tracking-tighter">
+              Join UCI&apos;s
+            </h1>
+            <h1
+              className="text-4xl sm:text-5xl md:text-7xl font-extrabold leading-[0.85] tracking-tighter bg-clip-text text-transparent mt-0"
+              style={{
+                backgroundImage:
+                  "linear-gradient(to right, #a8d8ff, #ffffff, #a8d8ff)",
+              }}
+            >
+              Premier Strategy Consulting Org
+            </h1>
+          </motion.div>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -136,11 +144,8 @@ function Students() {
                   custom={i}
                   variants={fadeUp}
                 >
-                  <div className="text-7xl md:text-8xl font-extrabold text-icgblue leading-none -mb-4 select-none">
-                    &ldquo;
-                  </div>
                   <p className="text-gray-700 text-sm md:text-base leading-relaxed mb-8">
-                    {t.quote}
+                    &ldquo;{t.quote}&rdquo;
                   </p>
                   <div className="flex items-center gap-4">
                     <img

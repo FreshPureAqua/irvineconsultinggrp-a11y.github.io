@@ -141,7 +141,7 @@ export default function Team() {
             A collaborate and intuitive
           </h1>
           <h1
-            className="text-4xl sm:text-5xl md:text-7xl font-extrabold leading-[0.85] tracking-tighter italic bg-clip-text text-transparent mt-0"
+            className="text-4xl sm:text-5xl md:text-7xl font-extrabold leading-[0.85] tracking-tighter bg-clip-text text-transparent mt-0"
             style={{
               backgroundImage: "linear-gradient(to right, #a8d8ff, #ffffff, #a8d8ff)",
             }}

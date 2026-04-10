@@ -96,16 +96,8 @@ function TestimonialCard({ testimonial, position, onClick }) {
       onClick={isClickable ? onClick : undefined}
     >
       <div className="bg-white rounded-2xl shadow-lg p-8 md:p-10">
-        <div className="flex justify-between items-start mb-4">
-          <div className="text-4xl text-icgblue leading-none">
-            &ldquo;
-          </div>
-          <div className="text-4xl text-icgblue leading-none">
-            &rdquo;
-          </div>
-        </div>
         <p className="text-gray-700 text-base md:text-lg leading-relaxed mb-8">
-          {testimonial.quote}
+          &ldquo;{testimonial.quote}&rdquo;
         </p>
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
@@ -162,7 +154,7 @@ function Home() {
 
         <div className="relative z-10 flex-1 flex flex-col items-center justify-center text-center px-6">
           <motion.h1
-            className="text-[clamp(2.2rem,7vw,6.5rem)] font-extrabold text-white leading-none tracking-tight whitespace-nowrap"
+            className="font-extrabold text-white leading-none tracking-tight whitespace-nowrap text-[clamp(2.2rem,7vw,6.5rem)]"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: 'easeOut' }}
@@ -170,12 +162,16 @@ function Home() {
             Irvine Consulting Group
           </motion.h1>
           <motion.p
-            className="mt-4 text-lg sm:text-xl text-white/70 font-light tracking-wide"
+            className="mt-5 text-sm sm:text-[1.05rem] md:text-[1.3125rem] font-semibold tracking-wide bg-clip-text text-transparent leading-[1.45] pb-[0.2em] inline-block max-w-full"
+            style={{
+              backgroundImage:
+                "linear-gradient(to right, #a8d8ff, #ffffff, #a8d8ff)",
+            }}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.3 }}
           >
-            UCI's Premier Strategy Consulting Org
+            UCI&apos;s Premier Strategy Consulting Org
           </motion.p>
         </div>
 
@@ -246,21 +242,26 @@ function Home() {
         <div className="container mx-auto max-w-6xl">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-[5.25rem] text-center">
             {[
-              { number: '10+', label: 'Clients served' },
-              { number: '$200 M+', label: 'Value Served' },
-              { number: '200+', label: 'Hours of Service' },
+              { number: '13+', label: 'Clients served' },
+              { number: '$200 M+', label: 'Value Served', numberNowrap: true },
+              { number: '600+', label: 'Hours of Service' },
             ].map((stat, i) => (
               <motion.div
                 key={stat.label}
+                className="min-w-0 text-center"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
               >
-                <p className="text-[3.94rem] md:text-[5.25rem] font-bold text-icgblue tracking-tight leading-none transition-transform duration-300 hover:scale-110 cursor-default">
+                <p
+                  className={`inline-block text-[3.94rem] md:text-[5.25rem] font-bold text-icgblue tracking-tight leading-none transition-transform duration-300 hover:scale-110 cursor-default ${
+                    stat.numberNowrap ? 'whitespace-nowrap' : ''
+                  }`}
+                >
                   {stat.number}
                 </p>
-                <p className="mt-4 text-gray-400 text-[1.75rem] font-light leading-snug">
+                <p className="mt-4 text-black text-[1.75rem] font-light leading-snug">
                   {stat.label}
                 </p>
               </motion.div>

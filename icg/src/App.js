@@ -1,5 +1,6 @@
 import './index.css';
-import { HashRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import Team from './pages/Team';
 import Students from './pages/Students';
@@ -9,10 +10,13 @@ import Footer from './components/Footer';
 import Navbar from './components/Navbar';
 import ScrollToTop from './components/ScrollToTop';
 
-function AppContent() {
-  const location = useLocation();
-  const hideFooter = location.pathname === '/team' || location.pathname === '/contact' || location.pathname === '/events';
+const muiTheme = createTheme({
+  typography: {
+    fontFamily: '"Aileron", ui-sans-serif, system-ui, sans-serif',
+  },
+});
 
+function AppContent() {
   return (
     <div className="">
       <Navbar />
@@ -23,17 +27,19 @@ function AppContent() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/events" element={<Events />} />
       </Routes>
-      {!hideFooter && <Footer />}
+      <Footer />
     </div>
   );
 }
 
 function App() {
   return (
-    <Router>
-      <ScrollToTop />
-      <AppContent />
-    </Router>
+    <ThemeProvider theme={muiTheme}>
+      <Router>
+        <ScrollToTop />
+        <AppContent />
+      </Router>
+    </ThemeProvider>
   );
 }
 

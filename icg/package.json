@@ -6,6 +6,7 @@
   "dependencies": {
     "@emotion/react": "latest",
     "@emotion/styled": "latest",
+    "@fontsource/aileron": "^5.2.5",
     "@formspree/react": "^3.0.0",
     "@mui/lab": "latest",
     "@mui/material": "latest",

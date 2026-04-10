@@ -119,7 +119,7 @@ export default function Events() {
               transition={{ duration: 0.5 }}
               key="upcoming"
             >
-              <h1 className="text-5xl md:text-7xl font-extrabold text-icgblue italic font-marcellus mb-4">
+              <h1 className="text-5xl md:text-7xl font-extrabold text-icgblue italic mb-4">
                 Stay Tuned
               </h1>
               <p className="text-gray-500 text-base md:text-lg">

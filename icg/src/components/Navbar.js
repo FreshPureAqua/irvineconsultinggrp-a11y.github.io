@@ -30,7 +30,7 @@ function Navbar() {
   };
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-white/95 backdrop-blur shadow-md' : 'bg-transparent'}`}>
+    <nav className="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-transparent">
       <div className="container mx-auto px-6 py-4 flex items-center justify-center relative">
         {/* Desktop Nav - Centered pill */}
         <div className={`hidden md:flex items-center gap-1 rounded-full px-2 py-1.5 transition-all duration-300 ${scrolled ? 'bg-gray-100' : 'bg-white/20 backdrop-blur-sm'}`}>

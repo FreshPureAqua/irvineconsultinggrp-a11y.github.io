@@ -22,36 +22,36 @@ const testimonials = [
 
 const timelineData = [
   {
-    date: "Oct 20, 2026",
+    date: "Oct 1, 2026",
     heading: "Applications Open",
     content: "Apply to join ICG and take the first step toward a hands-on consulting experience. Stay connected on LinkedIn, Instagram, and our website for updates.",
     button: { label: "Apply", href: APPLY_URL },
   },
   {
-    date: "Oct 20-22, 2026",
+    date: "Oct 7–10, 2026",
     heading: "Coffee Chats",
     content: "Schedule a coffee chat with someone from the ICG team to learn more about the application process and get your questions answered.",
     button: { label: "Sign Up", href: COFFEE_CHAT_URL },
   },
   {
-    date: "April 22, 2026",
+    date: "Oct 15, 2026",
     heading: "In-Person Info Session",
     content: "Meet the ICG team, learn more about ICG, gain insights on the recruitment process",
   },
   {
-    date: "April 23, 2026",
+    date: "Oct 24, 2026",
     heading: "Application Deadline",
-    content: "Applications must be submitted by 11:59 PM on April 23rd!",
+    content: "Applications must be submitted by 11:59 PM on October 24th!",
   },
   {
-    date: "April 25, 2026",
+    date: "Oct 27, 2026",
     heading: "First Round Group Interviews",
-    content: "Group Interviews will be held on April 25th. You will be paired with other candidates and will have a change to share your skills in a group setting.",
+    content: "Group interviews will be held on October 27th. You will be paired with other candidates and will have a chance to share your skills in a group setting.",
   },
   {
-    date: "April 26, 2026",
+    date: "Oct 30, 2026",
     heading: "Second Round Individual Interviews",
-    content: "Individual interviews will be held on April 26th. You will have a chance to share your skills and learn more about the ICG team in a one-on-one setting.",
+    content: "Individual interviews will be held on October 30th. You will have a chance to share your skills and learn more about the ICG team in a one-on-one setting.",
   },
 ];
 
@@ -70,12 +70,12 @@ function Students() {
       {/* ===== HERO ===== */}
       <div
         className="relative min-h-screen bg-cover bg-center flex flex-col items-center justify-center"
-        style={{ backgroundImage: `url("/icg-team.png")` }}
+        style={{ backgroundImage: `url("/W%2726%20Girls.jpg")` }}
       >
         <div className="absolute inset-0 bg-icgblue/70" />
         <div className="relative z-10 text-center px-6">
           <motion.h1
-            className="text-4xl sm:text-6xl md:text-8xl text-white font-extrabold leading-tight tracking-tight font-marcellus"
+            className="text-4xl sm:text-6xl md:text-8xl text-white font-extrabold leading-tight tracking-tight"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
@@ -108,7 +108,7 @@ function Students() {
         <div className="pt-16 pb-10 px-2 md:px-6">
           <div className="container mx-auto">
             <motion.h2
-              className="text-5xl md:text-7xl font-extrabold text-icgblue mb-4 font-marcellus text-center"
+              className="text-5xl md:text-7xl font-extrabold text-icgblue mb-4 text-center"
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
@@ -136,7 +136,7 @@ function Students() {
                   custom={i}
                   variants={fadeUp}
                 >
-                  <div className="text-7xl md:text-8xl font-extrabold text-icgblue font-serif leading-none -mb-4 select-none">
+                  <div className="text-7xl md:text-8xl font-extrabold text-icgblue leading-none -mb-4 select-none">
                     &ldquo;
                   </div>
                   <p className="text-gray-700 text-sm md:text-base leading-relaxed mb-8">
@@ -163,7 +163,7 @@ function Students() {
         <div className="py-24 px-2 md:px-6">
           <div className="container mx-auto max-w-3xl">
             <motion.h2
-              className="text-5xl md:text-7xl font-extrabold text-icgblue mb-40 font-marcellus text-center"
+              className="text-5xl md:text-7xl font-extrabold text-icgblue mb-40 text-center"
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}

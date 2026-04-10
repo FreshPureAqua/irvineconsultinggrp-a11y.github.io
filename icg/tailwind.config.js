@@ -6,9 +6,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        marcellus: ['Marcellus', 'serif'], // Add Marcellus font
+        sans: ['"Helvetica Neue"', 'Helvetica', 'Arial', 'sans-serif'],
         serif: ['"Times New Roman"', 'serif'],
-        helvetica: ['Helvetica', 'Arial', 'sans-serif'],
       },
       colors: {
         icgblue: '#061e2a',

@@ -24,6 +24,7 @@ const testimonials = [
     author: "Alex Veytsman",
     role: "CEO, Artificial By Design",
     logo: "/clientlogo/abd.png",
+    headshot: "/clientheadshot/Alex Veytsman.jfif",
   },
   {
     quote:
@@ -31,6 +32,7 @@ const testimonials = [
     author: "Brittany Coleman",
     role: "Founder and CEO, ToughCutie",
     logo: "/clientlogo/toughcutie.png",
+    headshot: "/clientheadshot/Brittany Coleman.jpeg",
   },
   {
     quote:
@@ -38,6 +40,7 @@ const testimonials = [
     author: "Amit Seth",
     role: "CEO, AdGreetz",
     logo: "/clientlogo/adgreetz.png",
+    headshot: "/clientheadshot/Amit Seth.jpg",
   },
   {
     quote:
@@ -45,6 +48,7 @@ const testimonials = [
     author: "Brittany Coleman",
     role: "CEO, ToughCutie",
     logo: "/clientlogo/toughcutie.png",
+    headshot: "/clientheadshot/Brittany Coleman.jpeg",
   },
 ];
 
@@ -71,7 +75,7 @@ const faqs = [
   },
 ];
 
-function TestimonialCard({ testimonial, position }) {
+function TestimonialCard({ testimonial, position, onClick }) {
   const variants = {
     center: { x: 0, scale: 1, opacity: 1, zIndex: 10, filter: 'blur(0px)' },
     left: { x: '-70%', scale: 0.85, opacity: 0.5, zIndex: 5, filter: 'blur(2px)' },
@@ -79,31 +83,48 @@ function TestimonialCard({ testimonial, position }) {
     hidden: { x: 0, scale: 0.7, opacity: 0, zIndex: 0, filter: 'blur(4px)' },
   };
 
+  const isClickable = position === 'left' || position === 'right';
+
   return (
     <motion.div
-      className="absolute w-full max-w-2xl px-4"
+      className={`absolute w-full max-w-2xl px-4 ${isClickable ? 'cursor-pointer' : ''}`}
       animate={position}
       variants={variants}
       initial={false}
       transition={{ duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
-      style={{ pointerEvents: position === 'center' ? 'auto' : 'none' }}
+      style={{ pointerEvents: position === 'hidden' ? 'none' : 'auto' }}
+      onClick={isClickable ? onClick : undefined}
     >
       <div className="bg-white rounded-2xl shadow-lg p-8 md:p-10">
-        <div className="text-4xl text-icgblue font-serif leading-none mb-4">
-          &ldquo;
+        <div className="flex justify-between items-start mb-4">
+          <div className="text-4xl text-icgblue leading-none">
+            &ldquo;
+          </div>
+          <div className="text-4xl text-icgblue leading-none">
+            &rdquo;
+          </div>
         </div>
         <p className="text-gray-700 text-base md:text-lg leading-relaxed mb-8">
           {testimonial.quote}
         </p>
         <div className="flex items-center justify-between">
-          <div>
-            <p className="font-bold text-icgblue">{testimonial.author}</p>
-            <p className="text-sm text-gray-500">{testimonial.role}</p>
+          <div className="flex items-center gap-3">
+            {testimonial.headshot && (
+              <img
+                src={testimonial.headshot}
+                alt={testimonial.author}
+                className="w-10 h-10 md:w-12 md:h-12 rounded-full object-cover shrink-0"
+              />
+            )}
+            <div>
+              <p className="font-bold text-icgblue">{testimonial.author}</p>
+              <p className="text-sm text-gray-500">{testimonial.role}</p>
+            </div>
           </div>
           <img
             src={testimonial.logo}
             alt="Company"
-            className="h-10 md:h-12 w-auto object-contain"
+            className="h-20 md:h-24 w-auto max-w-[min(100%,280px)] object-contain"
           />
         </div>
       </div>
@@ -208,20 +229,22 @@ function Home() {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.15 }}
             >
-              <img
-                src="/team3.png"
-                alt="ICG Team"
-                className="w-full h-auto rounded-xl shadow-md"
-              />
+              <div className="overflow-hidden rounded-xl shadow-md aspect-[4/3] w-full">
+                <img
+                  src="/W%2726%20Group.jpg"
+                  alt="ICG team — Winter 2026 group"
+                  className="h-full w-full object-cover object-[38%_center] scale-[1.22] origin-center"
+                />
+              </div>
             </motion.div>
           </div>
         </div>
       </div>
 
-      {/* ===== STATS ===== */}
-      <div className="bg-white pb-28 px-6">
-        <div className="container mx-auto max-w-4xl">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
+      {/* ===== STATS (~1.75× vs previous text-4xl/md:text-5xl + labels) ===== */}
+      <div className="bg-white pb-36 md:pb-40 px-6">
+        <div className="container mx-auto max-w-6xl">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-[5.25rem] text-center">
             {[
               { number: '10+', label: 'Clients served' },
               { number: '$200 M+', label: 'Value Served' },
@@ -234,10 +257,12 @@ function Home() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
               >
-                <p className="text-4xl md:text-5xl font-bold text-icgblue tracking-tight">
+                <p className="text-[3.94rem] md:text-[5.25rem] font-bold text-icgblue tracking-tight leading-none transition-transform duration-300 hover:scale-110 cursor-default">
                   {stat.number}
                 </p>
-                <p className="mt-2 text-gray-400 text-base font-light">{stat.label}</p>
+                <p className="mt-4 text-gray-400 text-[1.75rem] font-light leading-snug">
+                  {stat.label}
+                </p>
               </motion.div>
             ))}
           </div>
@@ -248,7 +273,7 @@ function Home() {
       <div className="bg-[#f0f4f8] py-24 md:py-28 px-6">
         <div className="container mx-auto max-w-5xl">
           <motion.h2
-            className="text-3xl md:text-5xl font-bold text-icgblue text-center font-marcellus"
+            className="text-3xl md:text-5xl font-bold text-icgblue text-center"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -271,6 +296,7 @@ function Home() {
                   key={i}
                   testimonial={t}
                   position={getPosition(i)}
+                  onClick={() => setCurrentTestimonial(i)}
                 />
               ))}
             </AnimatePresence>
@@ -312,7 +338,7 @@ function Home() {
       <div className="bg-white py-24 md:py-28 px-6">
         <div className="container mx-auto max-w-3xl">
           <motion.h2
-            className="text-3xl md:text-5xl font-bold text-icgblue mb-12 font-marcellus"
+            className="text-3xl md:text-5xl font-bold text-icgblue mb-12"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}

@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   Search,
   BarChart2,
@@ -8,7 +9,7 @@ import {
   Mail,
   Linkedin,
 } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { useForm, ValidationError } from "@formspree/react";
 
 const fadeUp = {
@@ -60,16 +61,178 @@ const services = [
 ];
 
 const clients = [
-  { src: "/clientlogo/bereal.png", alt: "BeReal" },
-  { src: "/clientlogo/sandisk.png", alt: "SanDisk" },
-  { src: "/clientlogo/aura.png", alt: "AURA" },
-  { src: "/clientlogo/toughcutie.png", alt: "ToughCutie" },
-  { src: "/clientlogo/kura-sushi.png", alt: "Kura Sushi" },
-  { src: "/clientlogo/adgreetz.png", alt: "AdGreetz" },
-  { src: "/clientlogo/knowt.png", alt: "Knowt" },
-  { src: "/clientlogo/7leaves.png", alt: "7 Leaves Cafe" },
-  { src: "/clientlogo/datedrop.png", alt: "Date Drop" },
+  {
+    src: "/clientlogo/bereal.png",
+    alt: "BeReal",
+    projectDescription:
+      "We supported BeReal with market and user-behavior research to inform product positioning and growth priorities for their social platform.",
+  },
+  {
+    src: "/clientlogo/sandisk.png",
+    alt: "SanDisk",
+    projectDescription:
+      "Our team analyzed storage and memory market dynamics and helped frame strategic options around product lines and competitive differentiation.",
+  },
+  {
+    src: "/clientlogo/aura.png",
+    alt: "AURA",
+    projectDescription:
+      "We partnered with AURA on go-to-market and customer insights work to sharpen messaging and clarify expansion opportunities.",
+  },
+  {
+    src: "/clientlogo/toughcutie.png",
+    alt: "ToughCutie",
+    projectDescription:
+      "ICG delivered branding and growth strategy recommendations to help ToughCutie strengthen its narrative and scale in a crowded retail landscape.",
+  },
+  {
+    src: "/clientlogo/kura-sushi.png",
+    alt: "Kura Sushi",
+    projectDescription:
+      "We conducted market research and operational benchmarking to support Kura Sushi’s strategic planning and customer experience initiatives.",
+  },
+  {
+    src: "/clientlogo/adgreetz.png",
+    alt: "AdGreetz",
+    projectDescription:
+      "Our engagement focused on expansion strategy and partnership opportunities, helping AdGreetz prioritize markets and next-step growth levers.",
+  },
+  {
+    src: "/clientlogo/knowt.png",
+    alt: "Knowt",
+    projectDescription:
+      "We worked with Knowt on product and user research to refine positioning for their education platform and inform the product roadmap.",
+  },
+  {
+    src: "/clientlogo/7leaves.png",
+    alt: "7 Leaves Cafe",
+    projectDescription:
+      "ICG supported 7 Leaves with market analysis and growth strategy to evaluate new locations and strengthen brand presence in key regions.",
+  },
+  {
+    src: "/clientlogo/datedrop.png",
+    alt: "Date Drop",
+    projectDescription:
+      "We helped Date Drop clarify target segments and messaging through research and a structured go-to-market narrative for their consumer offering.",
+  },
 ];
+
+function ClientCarouselCard({
+  client,
+  position,
+  isFlipped,
+  onFlip,
+  onSideClick,
+}) {
+  const variants = {
+    center: { x: 0, scale: 1, opacity: 1, zIndex: 10, filter: "blur(0px)" },
+    left: {
+      x: "-72%",
+      scale: 0.82,
+      opacity: 0.45,
+      zIndex: 5,
+      filter: "blur(2px)",
+    },
+    right: {
+      x: "72%",
+      scale: 0.82,
+      opacity: 0.45,
+      zIndex: 5,
+      filter: "blur(2px)",
+    },
+    hidden: { x: 0, scale: 0.65, opacity: 0, zIndex: 0, filter: "blur(4px)" },
+  };
+
+  const isSide = position === "left" || position === "right";
+  const isCenter = position === "center";
+
+  const handleCardClick = () => {
+    if (isSide) onSideClick();
+    else if (isCenter) onFlip();
+  };
+
+  return (
+    <motion.div
+      className={`absolute w-full max-w-md px-3 md:px-4 ${
+        isCenter || isSide ? "cursor-pointer" : ""
+      }`}
+      animate={position}
+      variants={variants}
+      initial={false}
+      transition={{ duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
+      style={{
+        pointerEvents: position === "hidden" ? "none" : "auto",
+      }}
+      onClick={isCenter || isSide ? handleCardClick : undefined}
+      role={isCenter ? "button" : undefined}
+      tabIndex={isCenter ? 0 : undefined}
+      onKeyDown={
+        isCenter
+          ? (e) => {
+              if (e.key === "Enter" || e.key === " ") {
+                e.preventDefault();
+                onFlip();
+              }
+            }
+          : undefined
+      }
+      aria-label={
+        isCenter
+          ? isFlipped
+            ? `Show logo for ${client.alt}`
+            : `Show project details for ${client.alt}`
+          : undefined
+      }
+    >
+      <div
+        className="relative w-full min-h-[260px] md:min-h-[316px]"
+        style={{ perspective: "1100px" }}
+      >
+        <div
+          className="relative w-full min-h-[260px] md:min-h-[316px] transition-shadow duration-300 ease-out hover:shadow-xl"
+          style={{
+            transformStyle: "preserve-3d",
+            transform:
+              isFlipped && isCenter ? "rotateY(180deg)" : "rotateY(0deg)",
+            transition: "transform 0.55s cubic-bezier(0.4, 0, 0.2, 1)",
+          }}
+        >
+        {/* Front — logo tile */}
+        <div
+          className="absolute inset-0 rounded-2xl border border-gray-200/80 bg-skyblue/40 flex flex-col items-center justify-center px-4 py-0.5 md:px-6 md:py-1 shadow-md transition-transform duration-300 ease-out hover:-translate-y-1 hover:shadow-lg"
+          style={{
+            backfaceVisibility: "hidden",
+            WebkitBackfaceVisibility: "hidden",
+          }}
+        >
+          <img
+            src={client.src}
+            alt={client.alt}
+            className={`max-h-[252px] md:max-h-[308px] w-auto max-w-full object-contain ${client.logoClassName ?? ""}`}
+          />
+        </div>
+
+        {/* Back — company + project copy */}
+        <div
+          className="absolute inset-0 rounded-2xl border border-gray-200 bg-white p-5 py-4 md:p-6 md:py-5 shadow-md flex flex-col justify-center overflow-y-auto"
+          style={{
+            backfaceVisibility: "hidden",
+            WebkitBackfaceVisibility: "hidden",
+            transform: "rotateY(180deg)",
+          }}
+        >
+          <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-4">
+            {client.alt}
+          </h3>
+          <p className="text-sm md:text-base text-gray-600 leading-relaxed">
+            {client.projectDescription}
+          </p>
+        </div>
+        </div>
+      </div>
+    </motion.div>
+  );
+}
 
 const timelineData = [
   {
@@ -112,6 +275,33 @@ const timelineData = [
 
 export default function Contact() {
   const [state, handleSubmit] = useForm("xgvalkqb");
+  const [currentClient, setCurrentClient] = useState(0);
+  const [clientFlipped, setClientFlipped] = useState(false);
+
+  const totalClients = clients.length;
+
+  const getClientPosition = (index) => {
+    const diff = (index - currentClient + totalClients) % totalClients;
+    if (diff === 0) return "center";
+    if (diff === 1) return "right";
+    if (diff === totalClients - 1) return "left";
+    return "hidden";
+  };
+
+  const goToClient = (i) => {
+    setClientFlipped(false);
+    setCurrentClient(i);
+  };
+
+  const nextClient = () => {
+    setClientFlipped(false);
+    setCurrentClient((p) => (p + 1) % totalClients);
+  };
+
+  const prevClient = () => {
+    setClientFlipped(false);
+    setCurrentClient((p) => (p - 1 + totalClients) % totalClients);
+  };
 
   return (
     <div className="overflow-x-hidden">
@@ -122,11 +312,11 @@ export default function Contact() {
       >
         <div className="absolute inset-0 bg-icgblue/70" />
         <div className="relative z-10 text-center px-6">
-          <h1 className="text-4xl sm:text-5xl md:text-7xl text-white font-extrabold leading-[0.85] tracking-tighter font-marcellus">
+          <h1 className="text-4xl sm:text-5xl md:text-7xl text-white font-extrabold leading-[0.85] tracking-tighter">
             Trusted by Fortune 500 companies
           </h1>
           <h1
-            className="text-4xl sm:text-5xl md:text-7xl font-extrabold leading-[0.85] tracking-tighter font-marcellus italic bg-clip-text text-transparent mt-0"
+            className="text-4xl sm:text-5xl md:text-7xl font-extrabold leading-[0.85] tracking-tighter italic bg-clip-text text-transparent mt-0"
             style={{
               backgroundImage:
                 "linear-gradient(to right, #a8d8ff, #ffffff, #a8d8ff)",
@@ -142,7 +332,7 @@ export default function Contact() {
         {/* ===== Our Services ===== */}
         <section className="max-w-6xl mx-auto mb-24 md:mb-32">
           <motion.h2
-            className="text-4xl md:text-6xl font-extrabold text-icgblue font-marcellus text-center mb-12 md:mb-16"
+            className="text-4xl md:text-6xl font-extrabold text-icgblue text-center mb-12 md:mb-16"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
@@ -177,7 +367,7 @@ export default function Contact() {
         {/* ===== Our Clients ===== */}
         <section className="max-w-6xl mx-auto mb-24 md:mb-32">
           <motion.h2
-            className="text-4xl md:text-6xl font-extrabold text-icgblue font-marcellus text-center mb-12 md:mb-16"
+            className="text-4xl md:text-6xl font-extrabold text-icgblue text-center mb-12 md:mb-16"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
@@ -186,31 +376,61 @@ export default function Contact() {
             Our Clients.
           </motion.h2>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
-            {clients.map((client, i) => (
-              <motion.div
-                key={client.alt}
-                className="bg-skyblue/40 rounded-2xl flex items-center justify-center p-8 aspect-[4/3]"
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                custom={i}
-                variants={fadeUp}
-              >
-                <img
-                  src={client.src}
-                  alt={client.alt}
-                  className="max-h-48 md:max-h-60 object-contain"
+          <div
+            className="relative flex items-center justify-center max-w-4xl mx-auto"
+            style={{ minHeight: "300px" }}
+          >
+            <AnimatePresence mode="popLayout">
+              {clients.map((client, i) => (
+                <ClientCarouselCard
+                  key={client.alt}
+                  client={client}
+                  position={getClientPosition(i)}
+                  isFlipped={clientFlipped && currentClient === i}
+                  onFlip={() => setClientFlipped((f) => !f)}
+                  onSideClick={() => goToClient(i)}
                 />
-              </motion.div>
-            ))}
+              ))}
+            </AnimatePresence>
+          </div>
+
+          <div className="flex items-center justify-center gap-6 mt-8">
+            <button
+              type="button"
+              onClick={prevClient}
+              className="text-gray-400 hover:text-icgblue transition-colors text-2xl px-2"
+              aria-label="Previous client"
+            >
+              &larr;
+            </button>
+            <div className="flex gap-2 flex-wrap justify-center max-w-md">
+              {clients.map((c, i) => (
+                <button
+                  key={c.alt}
+                  type="button"
+                  onClick={() => goToClient(i)}
+                  className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
+                    currentClient === i ? "bg-icgblue w-7" : "bg-gray-300"
+                  }`}
+                  aria-label={`Show ${c.alt}`}
+                />
+              ))}
+            </div>
+            <button
+              type="button"
+              onClick={nextClient}
+              className="text-gray-400 hover:text-icgblue transition-colors text-2xl px-2"
+              aria-label="Next client"
+            >
+              &rarr;
+            </button>
           </div>
         </section>
 
         {/* ===== Project Timeline ===== */}
         <section className="max-w-3xl mx-auto mb-24 md:mb-32">
           <motion.h2
-            className="text-4xl md:text-6xl font-extrabold text-icgblue font-marcellus text-center mb-12 md:mb-16"
+            className="text-4xl md:text-6xl font-extrabold text-icgblue text-center mb-12 md:mb-16"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
@@ -288,7 +508,7 @@ export default function Contact() {
             viewport={{ once: true }}
             variants={fadeUp}
           >
-            <h2 className="text-4xl md:text-6xl font-extrabold text-icgblue font-marcellus mb-3">
+            <h2 className="text-4xl md:text-6xl font-extrabold text-icgblue mb-3">
               Contact Us.
             </h2>
             <p className="text-gray-500 text-sm md:text-base max-w-md mx-auto">
@@ -309,7 +529,7 @@ export default function Contact() {
               <div className="flex items-center space-x-4 md:space-x-6">
                 <div className="w-20 h-20 md:w-28 md:h-28 shrink-0 rounded-full overflow-hidden border">
                   <img
-                    src="/khang.png"
+                    src="/headshots/Khang Nguyen.png"
                     alt="Khang Nguyen"
                     className="w-full h-full object-cover"
                   />
@@ -338,7 +558,7 @@ export default function Contact() {
               <div className="flex items-center space-x-4 md:space-x-6">
                 <div className="w-20 h-20 md:w-28 md:h-28 shrink-0 rounded-full overflow-hidden border">
                   <img
-                    src="/michelle.png"
+                    src="/headshots/Michelle.png"
                     alt="Michelle Choy"
                     className="w-full h-full object-cover"
                   />

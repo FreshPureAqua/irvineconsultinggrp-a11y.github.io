@@ -5,21 +5,21 @@ import {
   getMembersByCategory,
 } from "../data/teamMembers";
 
-function MemberCard({ name, role, image, hoverImage, linkedin }) {
+function MemberCard({ name, role, image, linkedin, objectPosition, imgStyle, coolOverlay }) {
+  const style = { ...objectPosition && { objectPosition }, ...imgStyle };
   return (
-    <div className="group flex flex-col items-center">
-      <div className="relative w-32 h-32 sm:w-36 sm:h-36 md:w-40 md:h-40 lg:w-44 lg:h-44 mb-3 rounded-full overflow-hidden hover:cursor-pointer shadow-sm">
+    <div className="flex flex-col items-center">
+      <div
+        className="relative w-32 h-32 sm:w-36 sm:h-36 md:w-40 md:h-40 lg:w-44 lg:h-44 mb-3 rounded-full overflow-hidden shadow-md ring-0 ring-icgblue/15 transition-all duration-300 ease-out hover:scale-[1.07] hover:-translate-y-1.5 hover:shadow-xl hover:ring-4 hover:z-10 cursor-default"
+      >
         <img
           src={image}
           alt={name}
-          className="w-full h-full object-cover transition-opacity duration-300"
+          className="w-full h-full object-cover object-[center_70%]"
+          style={Object.keys(style).length ? style : undefined}
         />
-        {hoverImage && (
-          <img
-            src={hoverImage}
-            alt={`${name} hover`}
-            className="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-          />
+        {coolOverlay && (
+          <div className="absolute inset-0 bg-blue-900/10 pointer-events-none" />
         )}
       </div>
 
@@ -70,15 +70,34 @@ const TABS = [
   { key: "projectManagers", label: "Project Managers" },
 ];
 
+/** Sort key for "All Members": President → VPs → Directors → others; stable by source order. */
+function memberDisplayTier(member) {
+  if (member.role === "President") return 0;
+  if (member.role === "Vice President") return 1;
+  if (member.categories.includes("directors")) return 2;
+  return 3;
+}
+
+function sortMembersForAllView(members) {
+  const indexById = new Map(members.map((m, i) => [m.id, i]));
+  return [...members].sort(
+    (a, b) =>
+      memberDisplayTier(a) - memberDisplayTier(b) ||
+      indexById.get(a.id) - indexById.get(b.id)
+  );
+}
+
 export default function Team() {
   const [activeTab, setActiveTab] = useState("all");
 
   const getDisplayMembers = () => {
     switch (activeTab) {
-      case "all":
-        return getAllMembers().filter(
+      case "all": {
+        const list = getAllMembers().filter(
           (m) => !m.categories.includes("advisors")
         );
+        return sortMembersForAllView(list);
+      }
       case "executives":
         return getMembersByCategory("executives");
       case "directors":
@@ -93,6 +112,22 @@ export default function Team() {
   const advisors = getMembersByCategory("advisors");
   const members = getDisplayMembers();
 
+  const photoAdjustments = {
+    zach: { objectPosition: "40% center" },
+    parav: { filter: "brightness(1.2)" },
+    sathvik: { filter: "brightness(1.2)" },
+    vasavi: { filter: "brightness(1.2)" },
+    ethan: { filter: "brightness(1.2)" },
+    lucia: { filter: "brightness(1.2)" },
+    rohan: { filter: "brightness(1.2)" },
+    joel: { filter: "brightness(1.2)" },
+    brian: { filter: "brightness(1.2)" },
+    akash: { filter: "brightness(1.2)" },
+    eric: { transform: "scale(1.2)" },
+    abby: { transform: "scale(1.2)" },
+    aaron: { transform: "scale(1.2)" },
+  };
+
   return (
     <div className="overflow-x-hidden">
       {/* ===== Hero ===== */}
@@ -102,11 +137,11 @@ export default function Team() {
       >
         <div className="absolute inset-0 bg-icgblue/60" />
         <div className="relative z-10 text-center px-6">
-          <h1 className="text-4xl sm:text-5xl md:text-7xl text-white font-extrabold leading-[0.85] tracking-tighter font-marcellus">
+          <h1 className="text-4xl sm:text-5xl md:text-7xl text-white font-extrabold leading-[0.85] tracking-tighter">
             A collaborate and intuitive
           </h1>
           <h1
-            className="text-4xl sm:text-5xl md:text-7xl font-extrabold leading-[0.85] tracking-tighter font-marcellus italic bg-clip-text text-transparent mt-0"
+            className="text-4xl sm:text-5xl md:text-7xl font-extrabold leading-[0.85] tracking-tighter italic bg-clip-text text-transparent mt-0"
             style={{
               backgroundImage: "linear-gradient(to right, #a8d8ff, #ffffff, #a8d8ff)",
             }}
@@ -141,8 +176,13 @@ export default function Team() {
                   name={member.name}
                   role={member.role}
                   image={member.headshotSrc}
-                  hoverImage={member.hoverSrc}
                   linkedin={member.linkedinUrl}
+                  objectPosition={photoAdjustments[member.id]?.objectPosition}
+                  imgStyle={{
+                    ...(photoAdjustments[member.id]?.filter && { filter: photoAdjustments[member.id].filter }),
+                    ...(photoAdjustments[member.id]?.transform && { transform: photoAdjustments[member.id].transform }),
+                  }}
+                  coolOverlay={photoAdjustments[member.id]?.coolOverlay}
                 />
               ))}
           </div>
@@ -160,7 +200,6 @@ export default function Team() {
                 name={advisor.name}
                 role={advisor.role}
                 image={advisor.headshotSrc}
-                hoverImage={advisor.hoverSrc}
                 linkedin={advisor.linkedinUrl}
               />
             ))}

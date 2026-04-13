@@ -11,8 +11,6 @@ const fadeUp = {
   }),
 };
 
-const upcomingEvents = [];
-
 const pastEvents = [
   {
     id: 1,
